@@ -106,6 +106,10 @@ nav {
   color: var(--white);
 }
 
+.nav-links a.active {
+  color: #FFFFFF;
+}
+
 /* ── HERO SECTION ────────────────────────────────────────── */
 #hero {
   min-height: 100vh;
