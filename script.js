@@ -68,10 +68,18 @@ const revealElements = document.querySelectorAll(
   '.portfolio-card, .cert-card, .workflow-step, .skill-category'
 );
 
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
 revealElements.forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  el.classList.add('hidden');
+  revealObserver.observe(el);
 });
 
 // Reveal elements as they enter the viewport
