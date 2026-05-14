@@ -38,6 +38,26 @@
 }
 
 /* ── RESET & BASE ────────────────────────────────────────── */
+
+/*
+  PURPOSE:
+  Prevent layout shift by reserving final rendered space
+  so JS animations do not push content down after first paint
+*/
+
+.hero-content {
+  min-height: 60vh; /* adjust if needed based on your design */
+}
+
+/*
+  PURPOSE:
+  Prevent CLS caused by stats loading/animation injection
+*/
+
+.hero-stats {
+  min-height: 120px; /* ensures space is reserved before JS updates numbers */
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
