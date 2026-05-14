@@ -7,16 +7,35 @@
 
 /* ── SMOOTH SCROLL FOR NAV LINKS ─────────────────────────── */
 /* When a nav link is clicked, smoothly scroll to that section */
+
+/* chamged to*/
+
+/* ── SMOOTH SCROLL FOR NAV LINKS (REFLOW SAFE VERSION) ────── */
+/*
+   PURPOSE:
+   - Prevent forced reflow by avoiding layout reads like offsetTop
+   - Use browser-native anchor positioning instead of manual calculations
+   - Keep scroll smooth without triggering layout recalculations
+*/
+
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
+  link.addEventListener('click', function (e) {
     e.preventDefault();
+
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (!target) return;
+
+    /*
+      FIX:
+      - scrollIntoView does NOT require manual layout calculation
+      - browser handles positioning internally (no forced reflow chain)
+    */
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   });
 });
-
 
 /* ── ACTIVE NAV LINK ON SCROLL ───────────────────────────── */
 /* Highlights the correct nav link as user scrolls through sections */
