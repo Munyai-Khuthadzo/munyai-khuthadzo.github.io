@@ -23,22 +23,28 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 80;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute('id');
-    }
-  });
+const observerOptions = {
+  root: null,
+  rootMargin: '-50% 0px -50% 0px', 
+  threshold: 0
+};
 
-  navLinks.forEach(link => {
-    link.style.color = '';
-    if (link.getAttribute('href') === `#${current}`) {
-      link.style.color = '#FFFFFF';
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+
+      navLinks.forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === `#${id}`) {
+          link.style.color = '#FFFFFF';
+        }
+      });
     }
   });
-});
+}, observerOptions);
+
+sections.forEach(section => observer.observe(section));
 
 
 /* ── NAV BACKGROUND ON SCROLL ────────────────────────────── */
