@@ -51,18 +51,21 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const id = entry.target.getAttribute('id');
+      /*
+  PURPOSE:
+  - Eliminate DOM style mutation + layout recalculation risk
+  - Use class toggling instead of inline style changes
+*/
 
-      navLinks.forEach(link => {
-        link.style.color = '';
-        if (link.getAttribute('href') === `#${id}`) {
-          link.style.color = '#FFFFFF';
-        }
-      });
-    }
-  });
-}, observerOptions);
+const id = entry.target.getAttribute('id');
 
+navLinks.forEach(link => {
+  link.classList.remove('active');
+
+  if (link.getAttribute('href') === `#${id}`) {
+    link.classList.add('active');
+  }
+});
 sections.forEach(section => observer.observe(section));
 
 
