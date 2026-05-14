@@ -39,14 +39,51 @@
 
 /* ── RESET & BASE ────────────────────────────────────────── */
 
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/*
+  PURPOSE:
+  Lock initial layout BEFORE JS runs
+  Prevent body-level layout shift cascade
+*/
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /*
   PURPOSE:
   Prevent layout shift by reserving final rendered space
   so JS animations do not push content down after first paint
 */
 
+/*
+  PURPOSE:
+  Prevent initial render shift by locking layout space immediately
+  before any JS animation or observer runs
+*/
+
 .hero-content {
-  min-height: 60vh; /* adjust if needed based on your design */
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*
