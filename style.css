@@ -5,6 +5,19 @@
    Colours: Navy, Blue, Green, Teal, Purple, Orange
    ============================================================ */
 
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+
 /* ── CSS VARIABLES (COLOUR PALETTE) ─────────────────────────
    Change these to update colours site-wide instantly        */
 :root {
