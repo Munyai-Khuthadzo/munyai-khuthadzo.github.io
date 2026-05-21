@@ -231,3 +231,15 @@ document.querySelectorAll('.portfolio-card').forEach(card => {
 console.log('%c👋 Hi there!', 'font-size:20px; font-weight:bold; color:#2E6FD9;');
 console.log('%cThis site was hand-coded by Munyai Khuthadzo.', 'font-size:14px; color:#555;');
 console.log('%cCheck out the GitHub: github.com/Munyai-Khuthadzo', 'font-size:14px; color:#1A7A4A;');
+
+// User's Edge browser tabs metadata (for reference only, not part of JS code)
+// edge_all_open_tabs = [...]
+
+
+
+
+
+
+
+
+     
