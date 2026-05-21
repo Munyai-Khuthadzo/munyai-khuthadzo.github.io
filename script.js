@@ -233,7 +233,7 @@ console.log('%cThis site was hand-coded by Munyai Khuthadzo.', 'font-size:14px; 
 console.log('%cCheck out the GitHub: github.com/Munyai-Khuthadzo', 'font-size:14px; color:#1A7A4A;');
 
 /* 
-# User's Edge browser tabs metadata. 
+// User's Edge browser tabs metadata. 
 The tab with `isCurrent=true` is the user's currently active/viewing tab, 
 while tabs with `isCurrent=false` are other open tabs in the background.
 
