@@ -104,21 +104,7 @@ revealElements.forEach(el => {
   revealObserver.observe(el);
 });
 
-// Reveal elements as they enter the viewport
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      // Stagger the animation — each card appears slightly after the previous
-      setTimeout(() => {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }, index * 80);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
 
-revealElements.forEach(el => revealObserver.observe(el));
 
 
 /* ── STAT COUNTER ANIMATION ──────────────────────────────── */
